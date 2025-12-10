@@ -43,7 +43,7 @@ fintech_app/
 │   ├── src/
 │   ├── public/
 │   ├── package.json
-│   └── vite.config.js
+│   └── package-lock.json
 └── README.md
 ```
 
