@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fintechGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1976d2"></stop>
+      <stop offset="100%" stop-color="#42a5f5"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield Background -->
+  <path d="M256 20 L456 100 V240 C456 360 366 460 256 492 C146 460 56 360 56 240 V100 Z" fill="url(#fintechGradient)"></path>
+
+  <!-- Bar Chart Inside Shield -->
+  <rect x="150" y="260" width="40" height="120" rx="6" fill="white" opacity="0.9"></rect>
+  <rect x="230" y="220" width="40" height="160" rx="6" fill="white" opacity="0.9"></rect>
+  <rect x="310" y="180" width="40" height="200" rx="6" fill="white" opacity="0.9"></rect>
+
+  <!-- Currency Symbol Circle -->
+  <circle cx="256" cy="135" r="48" fill="white" opacity="0.9"></circle>
+  
+  <!-- Peso-like Currency Mark -->
+  <text x="256" y="152" text-anchor="middle" font-size="48" font-family="Arial" fill="#1976d2" font-weight="bold">₱</text>
+</svg>

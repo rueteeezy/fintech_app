@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+frontend/node_modules/
+
+# Caches
+.cache/
+frontend/.cache/
+
+# Build outputs
+dist/
+build/
