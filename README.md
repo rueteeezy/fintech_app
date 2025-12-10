@@ -99,8 +99,11 @@ GET	/api/subscribers	Fetch all subscribers
 Example payload:
 ```json
 {
-  "name": "John Doe",
-  "email": "john@test.com"
+  "firstName": "First2073",
+  "lastName": "Last955",
+  "email": "user855813@mail.com",
+  "name": "First2073 Last955",
+  "phone": "09993068643"
 }
 ```
 🧹 Git Ignore Rules
