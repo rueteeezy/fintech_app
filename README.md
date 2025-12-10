@@ -61,6 +61,7 @@ spring.datasource.url=jdbc:mysql://localhost:3306/fintech
 spring.datasource.username=root
 spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
+
 3. Run the backend:
 bash
 
@@ -72,18 +73,16 @@ Backend will run at:
 Navigate to the frontend:
 
 bash
-
 cd frontend
+
 Install dependencies:
-
 bash
-
 npm install
+
 Start development server:
-
 bash
-
 npm run dev
+
 Frontend will run at:
 👉 http://localhost:5173
 
@@ -93,9 +92,7 @@ Method	Endpoint	Description
 POST	/api/subscribers/add	Add new subscriber
 GET	/api/subscribers	Fetch all subscribers
 
-
 Example payload:
-
 json
 
 {
@@ -104,8 +101,6 @@ json
 }
 🧹 Git Ignore Rules
 The repository ignores:
-
-text
 
 node_modules/
 .idea/
