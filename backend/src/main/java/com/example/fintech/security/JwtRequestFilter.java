@@ -1,4 +1,5 @@
 package com.example.fintech.security;
+
 import com.example.fintech.security.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +14,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
@@ -33,43 +35,23 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String username = null;
         String jwt = null;
 
-        // If no header or doesn't start with Bearer, just continue the chain
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            chain.doFilter(request, response);
-            return;
-        }
-
-        jwt = authHeader.substring(7).trim();
-
-        // If it's clearly not a JWT (no dots), skip parsing
-        if (!jwt.contains(".")) {
-            chain.doFilter(request, response);
-            return;
-        }
-
-        try {
-            username = jwtUtil.extractUsername(jwt);
-        } catch (Exception e) {
-            // Malformed / expired / invalid token -> treat as unauthenticated and move on
-            chain.doFilter(request, response);
-            return;
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            jwt = authHeader.substring(7).trim();
+            try {
+                username = jwtUtil.extractUsername(jwt);
+            } catch (Exception ignored) { }
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-            boolean valid;
-            try {
-                valid = jwtUtil.validateToken(jwt, userDetails.getUsername());
-            } catch (Exception e) {
-                valid = false;
-            }
-
-            if (valid) {
+            if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails, null, userDetails.getAuthorities());
+
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }

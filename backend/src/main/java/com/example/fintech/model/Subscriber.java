@@ -12,6 +12,7 @@ public class Subscriber {
     private String firstName;
     private String lastName;
     private String email;
+    @Transient
     private String name;
     private String phone;
 
